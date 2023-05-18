@@ -1,0 +1,47 @@
+stages:
+    - codestyle
+    - build
+
+variables:
+  LANG_MAC: "en_US.UTF-8"
+
+
+Code Style:
+  only:
+    refs:
+      - merge_requests
+      - main
+  tags:
+    - mac-m1
+  stage: codestyle
+  needs: []
+  script:
+    - mkdir -p reports/swiftLint
+    - swiftlint --reporter emoji | tee reports/swiftLint/swiftLintReport.txt
+  artifacts:
+    when:
+      on_failure
+    paths:
+      - reports/swiftLint/swiftLintReport.txt
+    expire_in: 30 days
+
+Build:
+  only:
+    refs:
+      - merge_requests
+      - main
+  tags:
+    - mac-m1
+  stage: build
+  needs: ["Code Style"]
+  script:
+    - export LANG=${LANG_MAC}
+    - export LANGUAGE=${LANG_MAC}
+    - export LC_ALL=${LANG_MAC}
+    - arch -x86_64 pod install
+    - xcodebuild clean build 
+      -workspace AppDesigner.xcworkspace 
+      -scheme AppDesigner 
+      -configuration release 
+      -sdk iphoneos 
+      CODE_SIGN_IDENTITY="" CODE_SIGNING_REQUIRED=NO

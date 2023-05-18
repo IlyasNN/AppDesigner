@@ -1,0 +1,60 @@
+import Foundation
+import SwiftUI
+
+class TabRouter: ObservableObject {
+    
+<<<<<<< Updated upstream
+    let accountRouter = AccountRouter()
+=======
+    let messagnerRouter = MessangerRouter()
+>>>>>>> Stashed changes
+    
+    @ViewBuilder func home() -> some View {
+        HomeScreen()
+    }
+    
+    @ViewBuilder func help() -> some View {
+        HelpScreen()
+    }
+    
+    @ViewBuilder func messagner() -> some View {
+        MessangerListScreen(router: self.messagnerRouter)
+    }
+    
+    @ViewBuilder func account() -> some View {
+        AccountRouterView(router: self.accountRouter)
+    }
+    
+}
+
+struct TabRouterView: View {
+    @StateObject var router: TabRouter
+    
+    var body: some View {
+        TabView {
+            self.router.help()
+                .tabItem {
+                    // TODO: configure with config
+                    Label("Help", systemImage: "questionmark.circle.fill")
+                }
+            
+            self.router.home()
+                .tabItem {
+                    // TODO: configure with config
+                    Label("Home", systemImage: "house.fill")
+                }
+            
+            self.router.messagner()
+                .tabItem {
+                    // TODO: configure with config
+                    Label("Chat", systemImage: "message.fill")
+                }
+            
+            self.router.account()
+                .tabItem {
+                    // TODO: configure with config
+                    Label("Account", systemImage: "person.fill")
+                }
+        }
+    }
+}

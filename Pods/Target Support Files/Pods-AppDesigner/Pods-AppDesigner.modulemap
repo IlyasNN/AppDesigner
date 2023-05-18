@@ -1,0 +1,6 @@
+framework module Pods_AppDesigner {
+  umbrella header "Pods-AppDesigner-umbrella.h"
+
+  export *
+  module * { export * }
+}

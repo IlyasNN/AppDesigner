@@ -1,0 +1,12 @@
+{
+  "images" : [
+    {
+      "filename" : "ikonka-malchik.jpg",
+      "idiom" : "universal"
+    }
+  ],
+  "info" : {
+    "author" : "xcode",
+    "version" : 1
+  }
+}

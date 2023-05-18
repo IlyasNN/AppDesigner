@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>primaryColor</key>
+	<string>#386CDE</string>
+	<key>accountFlow</key>
+	<string>true</string>
+	<key>authorization</key>
+	<string>true</string>
+	<key>mapFlow</key>
+	<string>true</string>
+	<key>messangerFlow</key>
+	<string>true</string>
+	<key>addMapPins</key>
+	<string>true</string>
+	<key>helpFlow</key>
+	<string>true</string>
+	<key>todoFlow</key>
+	<string>true</string>
+</dict>
+</plist>
